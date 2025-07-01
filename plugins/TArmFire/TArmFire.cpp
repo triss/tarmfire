@@ -9,7 +9,7 @@ static InterfaceTable* ft;
 namespace TArmFire {
 
 TArmFire::TArmFire() {
-    mCalcFunc = make_calc_function<TArmFire, &TArmFire::next>();
+	mCalcFunc = make_calc_function<TArmFire, &TArmFire::next>();
 
 	armed = false;
 	prevArm = 0.f;
