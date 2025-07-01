@@ -9,13 +9,13 @@ namespace TArmFire {
 
 class TArmFire : public SCUnit {
 public:
-    TArmFire();
+	TArmFire();
 
 private:
-    // Calc function
-    void next(int nSamples);
+	// Calc function
+	void next(int nSamples);
 
-    // Member variables
+	// Member variables
 	bool armed;
 	float prevArm;
 	float prevFire;

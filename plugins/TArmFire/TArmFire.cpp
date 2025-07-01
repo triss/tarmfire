@@ -15,7 +15,7 @@ TArmFire::TArmFire() {
 	prevArm = 0.f;
 	prevFire = 0.f;
 
-    next(1);
+	next(1);
 }
 
 void TArmFire::next(int nSamples) {
@@ -43,7 +43,7 @@ void TArmFire::next(int nSamples) {
 } // namespace TArmFire
 
 PluginLoad(TArmFireUGens) {
-    // Plugin magic
-    ft = inTable;
-    registerUnit<TArmFire::TArmFire>(ft, "TArmFire", false);
+	// Plugin magic
+	ft = inTable;
+	registerUnit<TArmFire::TArmFire>(ft, "TArmFire", false);
 }
