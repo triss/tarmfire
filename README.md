@@ -5,7 +5,7 @@ A SuperCollider unit generator that outputs a trigger from its fire input when a
 ### Examples
 
 ```
-// synchronise random stream of trigers to a clock
+// synchronise random stream of triggers to a clock
 (
 a.free; a = {
 	t = Dust.ar(5);
@@ -15,7 +15,7 @@ a.free; a = {
 }.play
 )
 
-// align trigers to clock
+// align triggers to clock
 (
 a.free; a = {
 	t = Impulse.ar(5);
@@ -25,7 +25,7 @@ a.free; a = {
 }.play
 )
 
-// align trigers to a swung clock
+// align triggers to a swung clock
 (
 a.free; a = {
 	t = Impulse.ar(5);
