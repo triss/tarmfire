@@ -1,8 +1,40 @@
-# TArmFire
+# TArmFire SuperCollider UGen
 
-Author: Tristan Strange
+A SuperCollider unit generator that outputs a trigger from its fire input when armed. It’s armed by a trigger at its arm input and disarms once fired.
 
-Outputs a trigger from its fire input when armed. It’s armed by a trigger at its arm input and disarms once fired.
+### Examples
+
+```
+// synchronise random stream of trigers to a clock
+(
+a.free; a = {
+	t = Dust.ar(5);
+	c = Impulse.ar(8);
+
+	TArmFire.ar(t, c);
+}.play
+)
+
+// align trigers to clock
+(
+a.free; a = {
+	t = Impulse.ar(5);
+	c = Impulse.ar(8);
+
+	TArmFire.ar(t, c);
+}.play
+)
+
+// align trigers to a swung clock
+(
+a.free; a = {
+	t = Impulse.ar(5);
+	c = Impulse.ar(4) + Impulse.ar(4, 0.3);
+
+	TArmFire.ar(t, c);
+}.play
+)
+```
 
 ### Requirements
 
