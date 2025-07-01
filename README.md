@@ -19,6 +19,7 @@ Clone the project:
     cd build
 
 Then, use CMake to configure and build it:
+
     cmake -DSC_PATH=~/sources/supercollider/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/.local/share/SuperCollider/Extensions ..
     make && make install
 
