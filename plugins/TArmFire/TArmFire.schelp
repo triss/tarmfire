@@ -1,0 +1,26 @@
+class:: TArmFire
+summary:: Outputs a trigger from its fire input when armed. It’s armed by a trigger at its arm input and disarms once fired.
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+Outputs a trigger from its fire input when armed. It’s armed by a trigger at its arm input and disarms once fired.
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+
+{ TArmFire.ar(/* TODO */) }.play
+
+::
