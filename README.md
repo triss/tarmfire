@@ -19,19 +19,16 @@ Clone the project:
     cd build
 
 Then, use CMake to configure and build it:
+    cmake -DSC_PATH=~/sources/supercollider/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/.local/share/SuperCollider/Extensions ..
+    make && make install
 
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    cmake --build . --config Release
-    cmake --build . --config Release --target install
+`-DCMAKE_INSTALL_PREFIX` should be the path to your SuperColider Extension directory.
 
-You may want to manually specify the install location in the first step to point it at your
-SuperCollider extensions directory: add the option `-DCMAKE_INSTALL_PREFIX=/path/to/extensions`.
-
-It's expected that the SuperCollider repo is cloned at `../supercollider` relative to this repo. If
-it's not: add the option `-DSC_PATH=/path/to/sc/source`.
+`-DSC_PATH` should be set to the path of your SuperCollider source files.
 
 ### Developing
 
+This unit generator was developed with the [SuperCollider cookiecutter](https://github.com/cookiecutter/cookiecutter).
 Use the command in `regenerate` to update CMakeLists.txt when you add or remove files from the
 project. You don't need to run it if you only change the contents of existing files. You may need to
 edit the command if you add, remove, or rename plugins, to match the new plugin paths. Run the

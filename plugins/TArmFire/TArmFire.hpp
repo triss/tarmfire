@@ -11,14 +11,14 @@ class TArmFire : public SCUnit {
 public:
     TArmFire();
 
-    // Destructor
-    // ~TArmFire();
-
 private:
     // Calc function
     void next(int nSamples);
 
     // Member variables
+	bool armed;
+	float prevArm;
+	float prevFire;
 };
 
 } // namespace TArmFire

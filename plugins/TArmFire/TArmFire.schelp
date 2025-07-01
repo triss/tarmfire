@@ -1,26 +1,54 @@
 class:: TArmFire
 summary:: Outputs a trigger from its fire input when armed. It’s armed by a trigger at its arm input and disarms once fired.
-related:: TODO
-categories:: UGens>TODO
+related:: Classes/ToggleFF
+categories:: UGens>Triggers
 
 description::
 
-Outputs a trigger from its fire input when armed. It’s armed by a trigger at its arm input and disarms once fired.
-
+TArmFire is a stateful trigger processor with two inputs: arm and fire. It outputs a trigger when a fire input arrives while armed (after ≥1 arm inputs since last reset), then immediately disarms. Simultaneous arm and fire triggers cause immediate output and reset.
 
 classmethods::
 
 method::ar, kr
 
-argument::TODO
+argument::arm
+Arms the unit.
 
-argument::TODO
-
+argument::fire
+Triggers output if armed and immediately disarms.
 
 examples::
 
 code::
 
-{ TArmFire.ar(/* TODO */) }.play
+// synchronise random stream of trigers to a clock
+(
+a.free; a = {
+	t = Dust.ar(5);
+	c = Impulse.ar(8);
+
+	TArmFire.ar(t, c);
+}.play
+)
+
+// align trigers to clock
+(
+a.free; a = {
+	t = Impulse.ar(5);
+	c = Impulse.ar(8);
+
+	TArmFire.ar(t, c);
+}.play
+)
+
+// align trigers to a swung clock
+(
+a.free; a = {
+	t = Impulse.ar(5);
+	c = Impulse.ar(4) + Impulse.ar(4, 0.3);
+
+	TArmFire.ar(t, c);
+}.play
+)
 
 ::

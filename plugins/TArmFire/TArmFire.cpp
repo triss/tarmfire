@@ -10,24 +10,34 @@ namespace TArmFire {
 
 TArmFire::TArmFire() {
     mCalcFunc = make_calc_function<TArmFire, &TArmFire::next>();
+
+	armed = false;
+	prevArm = 0.f;
+	prevFire = 0.f;
+
     next(1);
 }
 
 void TArmFire::next(int nSamples) {
+	const float* currArm = in(0);
+	const float* currFire = in(1);
+	float* outbuf = out(0);
 
-    // Audio rate input
-    const float* input = in(0);
+	for (int i = 0; i < nSamples; ++i) {
+		// check for upward transitions on inputs
+		bool fired = currFire[i] > 0.f && prevFire <= 0.f;
+		armed = armed || currArm[i] > 0.f && prevArm <= 0.f;
 
-    // Control rate parameter: gain.
-    const float gain = in0(1);
+		if(armed && fired) {
+			armed = false;
+			outbuf[i] = 1.f;
+		} else {
+			outbuf[i] = 0.f;
+		}
 
-    // Output buffer
-    float* outbuf = out(0);
-
-    // simple gain function
-    for (int i = 0; i < nSamples; ++i) {
-        outbuf[i] = input[i] * gain;
-    }
+		prevArm = currArm[i];
+		prevFire = currFire[i];
+	}
 }
 
 } // namespace TArmFire
